@@ -1,92 +1,104 @@
 # System Resource Monitoring Dashboard for Ubuntu
 
-This script is a Bash-based system resource monitoring dashboard designed for Ubuntu. It provides real-time insights into various system metrics, including CPU and memory usage, network activity, disk usage, system load, memory usage, process monitoring, and service status. The dashboard is user-friendly and color-coded for better readability.
+## Overview
+
+The System Resource Monitoring Dashboard is a Bash script designed to provide real-time insights into system performance on Ubuntu. It displays critical information about CPU, memory, disk usage, network activity, and running services, making it an essential tool for system administrators and users who want to monitor their system's health.
 
 ## Features
 
-- **Top 10 Applications by CPU and Memory Usage**: Displays the top 10 applications consuming the most CPU and memory resources.
-- **Network Monitoring**: Shows active network connections, data received, data transmitted, and packet drops.
-- **Disk Usage**: Provides an overview of disk usage for all mounted filesystems, highlighting those that are over 80% full.
-- **System Load**: Displays the system load averages over 1, 5, and 15 minutes, along with CPU usage percentages for user, system, and idle states.
-- **Memory Usage**: Reports total, used, and free memory, including swap memory statistics.
-- **Process Monitoring**: Lists active processes, showing the top consumers of CPU and memory.
-- **Service Monitoring**: Checks the status of key services (e.g., SSH, Nginx, Apache2) and indicates whether they are running or stopped.
+- **Top 10 Applications by CPU and Memory Usage**: Displays the most resource-intensive applications.
+- **Network Monitoring**: Shows active connections, data received, and transmitted.
+- **Disk Usage**: Provides an overview of disk space usage and highlights filesystems that are over 80% full.
+- **System Load**: Displays the system load averages and CPU usage breakdown.
+- **Memory Usage**: Provides details on total, used, and free memory, including swap usage.
+- **Process Monitoring**: Lists active processes and their CPU and memory usage.
+- **Service Monitoring**: Checks the status of essential services like SSH, Nginx, and Apache.
+
+## Installation
+
+1. **Clone the Repository** (if applicable):
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+2. **Make the Script Executable**:
+   ```bash
+   chmod +x monitor.sh
+   ```
+
+3. **Run the Script**:
+   ```bash
+   ./monitor.sh
+   ```
 
 ## Usage
 
-### Running the Script
+The script can be run in two ways:
 
-To run the script, save it as `monitor.sh` and execute it in the terminal:
+### 1. Full Dashboard
 
+To run the full dashboard, simply execute the script without any arguments. The dashboard will refresh every 10 seconds.
 ```bash
-bash monitor.sh
+./monitor.sh
 ```
 
-### Command-Line Options
+### 2. Custom Options
 
-You can run the script with specific options to view particular metrics:
+You can also run specific sections of the dashboard by using command-line options:
 
-- `-cpu`: Display system load.
-- `-memory`: Display memory usage.
-- `-network`: Display network monitoring.
-- `-disk`: Display disk usage.
-- `-apps`: Display top applications by CPU and memory usage.
-- `-proc`: Display process monitoring.
-- `-services`: Display service monitoring.
-- `-all`: Display the full dashboard.
+- **CPU Load**: 
+  ```bash
+  ./monitor.sh -cpu
+  ```
 
-### Example
+- **Memory Usage**: 
+  ```bash
+  ./monitor.sh -memory
+  ```
 
-To view the full dashboard, simply run:
+- **Network Monitoring**: 
+  ```bash
+  ./monitor.sh -network
+  ```
+
+- **Disk Usage**: 
+  ```bash
+  ./monitor.sh -disk
+  ```
+
+- **Top Applications**: 
+  ```bash
+  ./monitor.sh -apps
+  ```
+
+- **Process Monitoring**: 
+  ```bash
+  ./monitor.sh -proc
+  ```
+
+- **Service Monitoring**: 
+  ```bash
+  ./monitor.sh -services
+  ```
+
+- **All Information**: 
+  ```bash
+  ./monitor.sh -all
+  ```
+
+### 3. Exiting the Dashboard
+
+To exit the dashboard at any time, press `CTRL + C`.
+
+## Customization
+
+You can modify the refresh interval by changing the `INTERVAL` variable in the script. The default is set to 10 seconds.
 
 ```bash
-bash monitor.sh -all
+INTERVAL=10
 ```
-
-## Code Explanation
-
-### Color Definitions
-
-The script defines several color codes for terminal output to enhance readability:
-
-```bash
-RED='\033[1;31m'
-GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[1;34m'
-CYAN='\033[1;36m'
-NC='\033[0m'  # No Color
-```
-
-### Banner Function
-
-The `banner` function clears the terminal and displays a title banner for the dashboard.
-
-### Monitoring Functions
-
-Each monitoring aspect is encapsulated in its own function:
-
-- **`top_apps`**: Retrieves and displays the top 10 applications by CPU and memory usage.
-- **`network_monitor`**: Gathers network statistics, including active connections and data transfer.
-- **`disk_usage`**: Checks disk usage and highlights filesystems that are nearly full.
-- **`system_load`**: Displays system load averages and CPU usage percentages.
-- **`memory_usage`**: Reports memory and swap usage statistics.
-- **`process_monitoring`**: Lists active processes and their resource consumption.
-- **`service_monitoring`**: Checks the status of essential services.
-
-### Full Dashboard Function
-
-The `full_dashboard` function calls all the monitoring functions in sequence to provide a comprehensive view of system resources.
-
-### Custom Switches
-
-The script allows for custom command-line switches to run specific monitoring functions based on user input.
-
-### Looping Behavior
-
-If no options are provided, the script runs the full dashboard in a loop, refreshing every 10 seconds.
 
 ## Conclusion
 
-This script is a powerful tool for monitoring system resources on Ubuntu, providing essential insights for system administrators and users alike. Customize and extend it as needed to fit your monitoring requirements.
-
+This System Resource Monitoring Dashboard is a powerful tool for monitoring system performance in real-time. It provides essential insights that can help in maintaining system health and optimizing resource usage. For further enhancements or contributions, feel free to reach out or submit a pull request.
